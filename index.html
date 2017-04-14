@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>商品</title>
+	<script src="rem.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="section" id="address">
+		<div class="header">
+			<a href="#rList" class="title">选择地址</a>
+			<input id="addr" type="text" placeholder="请输入地址">
+		</div>
+		<div class="content"></div>
+	</div>
+	<div class="section" id="rList">		
+		<div class="list-header">
+			<div class="location-box">
+				<a href="#address" class="location"><img src="imgs/location.png"></a>
+			</div>
+			<div class="search-box">
+				<input type="text" placeholder="搜索商家、商品" id="search-food">
+			</div>
+			<ul>
+				<li>黄焖鸡</li>
+				<li>清粥小菜</li>
+				<li>烤肉饭</li>
+				<li>第一佳大鸡排</li>
+				<li>炸鸡</li>
+				<li>花甲米线</li>
+			</ul>
+		</div>
+		<div id="nav">
+			<div class="swipe" id="mySwipe">
+				<div class="swipe-wrap">
+				    <div class="item" style="background: blue">
+				        第一个板块
+				    </div>
+				    <div class="item" style="background: red">
+				        第二个板块
+				    </div>
+				    <div class="item"  style="background: black">
+				        <!-- 滑动的第三个版块 -->
+				        第三个板块
+				    </div>
+				</div>
+				<ul id="position" class="hidden">
+				    <li class="cur"></li>
+				    <li style="margin-left:-5px"></li>
+				    <li style="margin-left:-5px"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="list-title">推荐商家</div>
+		<ul id="lists"></ul>
+	</div>
+	<div class="section" id="detail">
+		<div class="detail-wrapper">
+			<div class="detail-header"></div>
+			<div class="detail-reviews">
+				<div class="goods">商品</div>
+				<div class="evaluate">评价</div>
+			</div>
+			<div class="detail-content">
+				<div class="left-pane">
+					<ul class="detail-catalog"></ul>
+				</div>
+				<div class="right-pane">
+					<ul class="detail-info"></ul>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="left-cart"></div>
+				<div class="right-pay"></div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="search">
+		<a href="#address">商品搜索页</a>
+	</div>
+	<script src="zepto.js"></script>
+	<script src="lib/swipe.js"></script>
+	<script src="lib/Iscroll.js"></script>
+	<script src="module/addressModule.js"></script>
+	<script src="module/rListModule.js"></script>
+	<script src="module/detailModule.js"></script>
+	<script src="module/searchModule.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>
