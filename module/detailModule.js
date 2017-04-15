@@ -3,12 +3,23 @@ var detailModule = Object.create(addressModule);
 detailModule = $.extend(detailModule, {
 	name: "商品详情页面模块",
 	dom: $("#detail"),
+	cartList: {
+		// 该对象缓存购物车的所有实例
+	},
 	init: function() {
 		this.bindEvent();
+		cartView.init();
 	},
 	bindEvent: function() {
 		//
 		var me = this;
+
+		$(".clear").on("click", function() {
+
+			cartView.clear();
+
+		})
+
 		$(".detail-catalog").on("click", "li", function(event) {
 			//
 			$(this).addClass("active");
@@ -21,6 +32,71 @@ detailModule = $.extend(detailModule, {
 
 			rightScroll.scrollToElement(ele, 500);
 		})
+
+		// 购物车列表视图
+		var cartViewDom = $(".cart-view"); 
+
+		$(".cart-layer").click(function() {
+
+			cartViewDom.hide();
+
+		})
+
+		$(".cart").click(function() {
+
+			cartViewDom.toggle();
+
+			cartView.render();
+
+		})
+
+		// 购物车数量加减事件绑定
+		$(".right-pane").on("click", ".plus", function(event) {
+
+			var closestDom = $(this).closest(".food-info");
+
+			var curId = closestDom.data('itemId');
+
+			var curModule = me.list[curId];
+
+			curModule.plus();
+
+			// 动态加载购物车列表数据
+			cartView.list[curModule.id] = curModule;
+
+			var selector = '[data-itemId="' + curId + '"]';
+
+			$(selector).find(".num").html(curModule.num);
+
+			Store(location.hash.split("-")[1], cartView.list);
+
+		})
+
+		$(".right-pane").on("click", ".minus", function(event) {
+
+			var closestDom = $(this).closest(".food-info");
+
+			var curId = closestDom.data('itemId');
+
+			var curModule = me.list[curId];
+
+			curModule.minus();
+
+			if(curModule.num === 0) {
+
+				delete cartView.list[curModule.id];
+
+			}
+
+			// 动态加载购物车列表数据
+			var selector = '[data-itemId="' + curId + '"]';
+
+			$(selector).find(".num").html(curModule.num);
+
+			Store(location.hash.split("-")[1], cartView.list);
+
+		})
+
 	},
 	loadInfo: function(hash) {
 		// 加载信息
@@ -29,6 +105,15 @@ detailModule = $.extend(detailModule, {
 		this.lng = hash.split("-")[3];
 		this.loadHeaderInfo();
 		this.loadfoodInfo();
+
+	},
+	reset: function() {
+
+		this.cartList = {};
+
+		var id = location.hash.split("-")[1];
+
+		cartView.list = Store(id);
 
 	},
 	loadHeaderInfo: function() {
@@ -144,7 +229,7 @@ detailModule = $.extend(detailModule, {
 								res[i].name +   
 								'<span class="nav-info">' + res[i].description + '</span>' +
 							'</div>' + 
-							me.readFood(res[i].foods) +
+							me.renderFood(res[i].foods) +
 						'</li>';
 				}
 				$(".detail-catalog").html(catalogStr);
@@ -157,16 +242,16 @@ detailModule = $.extend(detailModule, {
 			}
 		})
 	},
-	readFood: function(data) {
+	renderFood: function(data) {
 		var str = "";
 		console.log(data);
 		
 		for(var i = 0; i < data.length; i++) {
-			var imgF = data[i].image_path.substring(0, 1),
+			/*var imgF = data[i].image_path.substring(0, 1),
 			    imgS = data[i].image_path.substring(1, 3),
-			    imgStyle = data[i].image_path.substring(32);
+			    imgStyle = data[i].image_path.substring(32);*/
 
-			str += 
+			/*str += 
 				'<div class="food-info">' +
 					'<div class="food-img">' +
 					'<img src="//fuss10.elemecdn.com/' + imgF + '/' + imgS + '/' + data[i].image_path.substring(3) + '.' + imgStyle + '?imageMogr/format/webp/" alt="商家图片" />' +
@@ -182,11 +267,35 @@ detailModule = $.extend(detailModule, {
 							'月售' + data[i].month_sales + '份 好评率' + data[i].satisfy_rate + '%' +
 						'</div>' +
 						'<div class="food-price">' +
-							'<span class="price-item">￥<span>' + data[i].specfoods[0].price + '</span></span>' +
-							'<span class="add">+</span>' +
+							'<span class="price-item">￥<span>' + data[i].specfoods[0].price + '</span></span>' + 
+							'<span class="minus">-</span>' + 
+							'<span class="num">0</span>' +
+							'<span class="plus">+</span>' +
 						'</div>' +
 					'</div>' +
-				'</div>';
+				'</div>';*/
+
+			for(var key in cartView.list) {
+
+				if (cartView.list[key].id === data[i].item_id.toString()) {
+
+					data[i].num = cartView.list[key].num;
+
+					console.log(cartView.list);
+
+					var cart = new singleCart(data[i]);
+
+					cartView.list[key] = cart;
+
+				}
+
+			}
+
+			var cart = new singleCart(data[i]);
+
+			str += cart.render();
+
+			this.cartList[cart.id] = cart;
 
 		}
 

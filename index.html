@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<!-- <meta http-equiv=Content-Typecontent=text/html;charset=utf-8/> -->
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>商品</title>
 	<script src="rem.js"></script>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
 </head>
 <body>
 	<div class="section" id="address">
@@ -72,17 +74,54 @@
 				</div>
 			</div>
 			<div class="footer">
-				<div class="left-cart"></div>
-				<div class="right-pay"></div>
+				<div class="left-cart">
+					<div class="cart">
+						<i class="iconfont icon-cart-active"></i>
+					</div>
+					<div class="total-box">
+						<p class="total-money">￥4</p>
+						<span class="total-send-money">配送费￥4</span>
+					</div>
+				</div>
+				<div class="right-pay">
+					<div class="right-pay">
+						还差￥20起送
+					</div>
+				</div>
+				<div class="cart-view">
+					<div class="cart-layer"></div>
+					<div class="cart-title">
+						<p>购物车</p>
+						<span class="clear">清空</span>
+					</div>
+					<ul class="cart-list">
+						<li class="cart-info">
+							<p>热腾腾澳洲铁板牛扒</p>
+							<p>￥<span>28</span></p>
+							<p>
+								<span class="minus">-</span>
+								<span class="num">1</span>
+								<span class="plus">+</span>
+							</p>
+						</li>
+					</ul>
+					<div class="food-box">
+						<p>餐盒</p>
+						<p>￥<span>5</span></p>
+					</div>
+				</div>	
 			</div>
 		</div>
 	</div>
 	<div class="section" id="search">
 		<a href="#address">商品搜索页</a>
 	</div>
+	<script src="lib/store.js"></script>
 	<script src="zepto.js"></script>
 	<script src="lib/swipe.js"></script>
 	<script src="lib/Iscroll.js"></script>
+	<script src="module/singleCart.js"></script>
+	<script src="module/cartView.js"></script>
 	<script src="module/addressModule.js"></script>
 	<script src="module/rListModule.js"></script>
 	<script src="module/detailModule.js"></script>

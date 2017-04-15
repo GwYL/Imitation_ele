@@ -483,6 +483,9 @@ body, html {
 	box-sizing: border-box;
 	padding-left: 0.426667rem;
 	color: #666;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .nav-info {
 	font-size: 9px;
@@ -521,7 +524,9 @@ body, html {
 	font-weight: bold;
 }
 .des {
-	color: #999;
+	color: #999;	
+	padding-right: 0.8rem;
+	box-sizing: border-box;
 }
 .food-price {
 	width: 100%;
@@ -537,21 +542,44 @@ body, html {
 .price-item span {
 	font-size: 16px;
 	font-weight: bold;
+}
+.price-item span {
+	font-size: 16px;
+	font-weight: bold;
 	margin-right: 0.170667rem;
 }
-.add {
+.minus, .plus {
 	display: inline-block;
-	width: 1rem;
-	height: 1rem;
+	width: 0.8rem;
+	height: 0.8rem;
 	background: #3199e8;
-	border-radius: 0.42rem;
+	border-radius: 0.4rem;
 	text-align: center;
 	color: #fff;
+	line-height: 0.8rem;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.num {
+	display: block;
+	position: absolute;
+	width: 0.8rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+    bottom: 0.5rem;
+    right: 1.8rem;
+    text-align: center;
+}
+.food-price .minus {
+	position: absolute;
+	bottom: 0.5rem;
+	right: 2.8rem;
+}
+.food-price .plus {
 	position: absolute;
 	bottom: 0.5rem;
 	right: 0.8rem;
-	line-height: 1rem;
-	font-size: 16px;
 }
 
 .footer {
@@ -559,4 +587,164 @@ body, html {
 	height: 2.048rem;
 	color: #fff;
 	background: #3d3d3f;
+	display: flex;
+	font-size: 13px;
 }
+.left-cart {
+	flex: 6;
+	height: 100%;
+	position: relative;
+	z-index: 11;
+}
+.cart {
+	width: 1.962667rem;
+	height: 1.962667rem;
+	border-radius: 50%;
+	background: #3f3f3f;
+	border: 0.213333rem solid #4d4d4d;
+	position: absolute;
+	left: 0.512rem;
+	bottom: 0.213333rem;
+	text-align: center;
+	line-height: 1.962667rem;
+	z-index: 12;
+}
+.icon-cart-active {
+	font-size: 26px!important;
+	color: #666;
+}
+.total-box {
+	width: 8rem;
+	height: 100%;
+	position: absolute;
+	top: 0; 
+	left: 3.370667rem;
+	text-align: left;
+	line-height: 0.6rem;
+	box-sizing: border-box;
+	padding-top: 0.426667rem;
+}
+.total-box p {
+	font-size: 16px;
+}
+.total-box span {
+	font-size: 12px;
+}
+.right-pay {
+	width: 4.48rem;
+	height: 2.048rem;
+	line-height: 2.048rem;
+	background: #535356;
+	position: relative;
+	z-index: 11;
+}
+.iScrollVerticalScrollbar {
+	z-index: 1!important;
+}
+.cart-view {
+	width: 100%;
+	background: #fff;
+	position: absolute;
+	bottom: 2.048rem;
+	left: 0;
+	z-index: 10;
+	font-style: 14px;
+	display: none;
+}
+.cart-layer {
+	background: #000;
+	position: fixed;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	width: 16rem;
+	height: 28.458667rem;
+	display: none;
+}
+.cart-title {
+	width: 100%;
+	height: 1.706667rem;
+	background: #eceff1;
+	line-height: 1.706667rem;
+	color: #666;
+	padding-left: 0.554667rem;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	z-index: 6;
+}
+.cart-list {
+	width: 100%;
+	padding-left: 0.554667rem;
+	box-sizing: border-box;
+	position: relative;
+	background: #fff;
+	z-index: 6;
+}
+.cart-list li {
+	width: 100%;
+	padding-right: 0.554667rem;
+	box-sizing: border-box;
+	height: 2.261333rem;
+	line-height: 2.261333rem;
+	color: #333;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 0.021333rem solid #fbfbfb;
+}
+.cart-list li p:first-child {
+	width: 9.3rem;
+	text-align: left;
+}
+.cart-list li p:nth-of-type(2) {
+	width: 2.218667rem;
+	text-align: left;
+	color: #f60;
+}
+.cart-list li p:nth-of-type(2) span {
+	font-size: 16px;
+	font-weight: bold;
+}
+.cart-list li p:last-child {
+	flex: 1;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.7rem 0.4rem 0;
+	box-sizing: border-box;
+}
+.cart-list .num {
+	bottom: 0.8rem;
+	left: 1.26rem;
+}
+
+.food-box {
+	width: 100%;
+	height: 2.261333rem;	
+	line-height: 2.261333rem;
+	padding-left: 0.554667rem;
+	box-sizing: border-box;
+	color: #333;
+	display: flex;
+	text-align: left;
+	position: relative;
+	background: #fff;
+	z-index: 6;
+}
+.food-box p:first-child {
+	width: 9.557333rem;
+}
+.food-box p:last-child {
+	flex: 1;
+	text-align: left;
+	color: #f60;
+}
+.food-box p:last-child span {
+	font-size: 16px;
+	font-weight: bold;
+}
+
