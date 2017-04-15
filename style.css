@@ -716,10 +716,11 @@ body, html {
 	justify-content: space-between;
 	padding: 0.7rem 0.4rem 0;
 	box-sizing: border-box;
+	padding-right: 0;
 }
 .cart-list .num {
 	bottom: 0.8rem;
-	left: 1.26rem;
+	left: 1.1rem;
 }
 
 .food-box {

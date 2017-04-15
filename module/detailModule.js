@@ -4,7 +4,7 @@ detailModule = $.extend(detailModule, {
 	name: "商品详情页面模块",
 	dom: $("#detail"),
 	cartList: {
-		// 该对象缓存购物车的所有实例
+		// 该对象用于缓存购物车的所有实例
 	},
 	init: function() {
 		this.bindEvent();
@@ -55,16 +55,16 @@ detailModule = $.extend(detailModule, {
 
 			var closestDom = $(this).closest(".food-info");
 
-			var curId = closestDom.data('itemId');
+			var curId = closestDom.data('itemid');
 
-			var curModule = me.list[curId];
+			var curModule = me.cartList[curId];
 
 			curModule.plus();
 
 			// 动态加载购物车列表数据
 			cartView.list[curModule.id] = curModule;
 
-			var selector = '[data-itemId="' + curId + '"]';
+			var selector = '[data-itemid="' + curId + '"]';
 
 			$(selector).find(".num").html(curModule.num);
 
@@ -76,9 +76,9 @@ detailModule = $.extend(detailModule, {
 
 			var closestDom = $(this).closest(".food-info");
 
-			var curId = closestDom.data('itemId');
+			var curId = closestDom.data('itemid');
 
-			var curModule = me.list[curId];
+			var curModule = me.cartList[curId];
 
 			curModule.minus();
 
@@ -89,7 +89,7 @@ detailModule = $.extend(detailModule, {
 			}
 
 			// 动态加载购物车列表数据
-			var selector = '[data-itemId="' + curId + '"]';
+			var selector = '[data-itemid="' + curId + '"]';
 
 			$(selector).find(".num").html(curModule.num);
 
@@ -247,33 +247,6 @@ detailModule = $.extend(detailModule, {
 		console.log(data);
 		
 		for(var i = 0; i < data.length; i++) {
-			/*var imgF = data[i].image_path.substring(0, 1),
-			    imgS = data[i].image_path.substring(1, 3),
-			    imgStyle = data[i].image_path.substring(32);*/
-
-			/*str += 
-				'<div class="food-info">' +
-					'<div class="food-img">' +
-					'<img src="//fuss10.elemecdn.com/' + imgF + '/' + imgS + '/' + data[i].image_path.substring(3) + '.' + imgStyle + '?imageMogr/format/webp/" alt="商家图片" />' +
-					'</div>' +
-					'<div class="food-detail">' +
-						'<div class="food-name">' +
-							data[i].name +
-						'</div>' +
-						'<div class="des">' +
-							data[i].description +
-						'</div>' +
-						'<div class="food-sales">' +
-							'月售' + data[i].month_sales + '份 好评率' + data[i].satisfy_rate + '%' +
-						'</div>' +
-						'<div class="food-price">' +
-							'<span class="price-item">￥<span>' + data[i].specfoods[0].price + '</span></span>' + 
-							'<span class="minus">-</span>' + 
-							'<span class="num">0</span>' +
-							'<span class="plus">+</span>' +
-						'</div>' +
-					'</div>' +
-				'</div>';*/
 
 			for(var key in cartView.list) {
 

@@ -1,8 +1,12 @@
 var cartView = {
-	name: "¹ºÎï³µÁĞ±íÄ£¿é",
+	name: "è´­ç‰©è½¦åˆ—è¡¨æ¨¡å—",
 	init: function() {
 		this.bindEvent();
 	},
+	list: {
+		//
+	},
+	dom: $(".cart-list"),
 	bindEvent: function() {
 		var me = this;
 
@@ -10,15 +14,17 @@ var cartView = {
 
 			var closestDom = $(this).closest(".cart-info");
 
-			var curId = closestDom.data('itemId');
+			var curId = closestDom.data('itemid');
 
 			var curModule = me.list[curId];
 
 			curModule.plus();
 
-			// ¶¯Ì¬¼ÓÔØ¹ºÎï³µÁĞ±íÊı¾İ
+			// åŠ¨æ€æ·»åŠ è´­ç‰©è½¦æ•°æ®
 
-			var selector = '[data-itemId="' + curId + '"]';
+			var selector = '[data-itemid="' + curId + '"]';
+
+			$(selector).find(".num").html(curModule.num);
 
 			Store(location.hash.split("-")[1], cartView.list);
 
@@ -28,15 +34,15 @@ var cartView = {
 
 			var closestDom = $(this).closest(".cart-info");
 
-			var curId = closestDom.data('itemId');
+			var curId = closestDom.data('itemid');
 
 			var curModule = me.list[curId];
 
 			curModule.minus();
 
-			// ¶¯Ì¬¼ÓÔØ¹ºÎï³µÁĞ±íÊı¾İ
+			// åŠ¨æ€æ·»åŠ è´­ç‰©è½¦æ•°æ®
 
-			var selector = '[data-itemId="' + curId + '"]';
+			var selector = '[data-itemid="' + curId + '"]';
 
 			$(selector).find(".num").html(curModule.num);
 
@@ -45,6 +51,7 @@ var cartView = {
 				delete cartView.list[curModule.id];
 
 				closestDom.remove();
+
 			}
 
 			Store(location.hash.split("-")[1], cartView.list);
@@ -59,7 +66,7 @@ var cartView = {
 
 			this.list[key].num = 0;
 
-			var selector = '[data-itemId="' + this.list[key].id + '"]';
+			var selector = '[data-itemid="' + this.list[key].id + '"]';
 
 			$(selector).find(".num").html(this.list[key].num);
 
@@ -71,7 +78,7 @@ var cartView = {
 
 		}
 	},
-	render: function() { // äÖÈ¾¹ºÎï³µ
+	render: function() { // æ¸²æŸ“è´­ç‰©è½¦è§†å›¾
 
 		var str = '';
 
