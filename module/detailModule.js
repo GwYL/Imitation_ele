@@ -26,7 +26,7 @@ detailModule = $.extend(detailModule, {
 
 			$(this).siblings().removeClass("active");
 
-			var selector = '[data-title ="' + $(this).text() + '"]';
+			var selector = '[data-title="' + $(this).text() + '"]';
 
 			var ele = $(selector).get(0);
 
@@ -40,11 +40,15 @@ detailModule = $.extend(detailModule, {
 
 			cartViewDom.hide();
 
+			$(".cart-layer").hide();
+
 		})
 
 		$(".cart").click(function() {
 
 			cartViewDom.toggle();
+
+			$(".cart-layer").show();
 
 			cartView.render();
 
@@ -58,7 +62,7 @@ detailModule = $.extend(detailModule, {
 			var curId = closestDom.data('itemid');
 
 			var curModule = me.cartList[curId];
-
+			
 			curModule.plus();
 
 			// 动态加载购物车列表数据
@@ -243,8 +247,8 @@ detailModule = $.extend(detailModule, {
 		})
 	},
 	renderFood: function(data) {
+
 		var str = "";
-		console.log(data);
 		
 		for(var i = 0; i < data.length; i++) {
 

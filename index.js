@@ -41,6 +41,7 @@ function routeControl() {
 	if(hash.indexOf("detail") !== -1) {
 		khash = "detail";
 		detailModule.loadInfo(hash);
+		detailModule.reset();
 	}
 
 	var module = hashModuleMap[khash]; // 动态获取对象的属性

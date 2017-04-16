@@ -25,7 +25,6 @@ singleCart.prototype.minus = function() { // 减
 }
 
 singleCart.prototype.render = function() { // 商品信息渲染
-	console.log(this.name);
 
 	str = 
 		'<div class="food-info" data-itemid="' + this.id + '">' +
