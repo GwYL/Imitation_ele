@@ -138,28 +138,28 @@ detailModule = $.extend(detailModule, {
 					imgStyle = res.image_path.substring(32);
 
 				str = 
-					'<div class="back"><a href="#rList">&lt;</a></div>' +
-						'<div class="detail-header-info">' +
-							'<div class="header-img">' +
-							'<img src="//fuss10.elemecdn.com/' + imgF + '/' + imgS + '/' + res.image_path.substring(3) + '.' + imgStyle + '?imageMogr/format/webp/" alt="商家图片" />' +
-							'</div>' +
-							'<div class="header-info">' +
-								'<div class="header-name">' + res.name + '</div>' +
-								'<div class="ways">' +
-									'<span class="amazon">蜂鸟专送 / </span>' +
-									'<span class="send-time">' + res.order_lead_time + '分钟直达 / </span>' +
-									'<span class="send-money">' + res.piecewise_agent_fee.tips + '</span>' +
-								'</div>' +
-								'<div class="notice">' +
-									'<p class="notice-info">公告: ' + res.promotion_info + '</p>' +
-								'</div>' +
-								'<div><a id="header_detail" href="">&gt;</a></div>' +
-							'</div>	' +
+					'<div class="back"><a href="#address">&lt;</a></div>' +
+					'<div class="detail-header-info">' +
+						'<div class="header-img">' +
+						'<img src="//fuss10.elemecdn.com/' + imgF + '/' + imgS + '/' + res.image_path.substring(3) + '.' + imgStyle + '?imageMogr/format/webp/" alt="商家图片" />' +
 						'</div>' +
-						'<div class="detail-active">' +
-						'<div class="news">' + res.activities[0].description + '</div>' +
-						'<span class="active-num">' + res.activities.length + '个活动</span>' +
-						'</div>';
+						'<div class="header-info">' +
+							'<div class="header-name">' + res.name + '</div>' +
+							'<div class="ways">' +
+								'<span class="amazon">蜂鸟专送 / </span>' +
+								'<span class="send-time">' + res.order_lead_time + '分钟直达 / </span>' +
+								'<span class="send-money">' + res.piecewise_agent_fee.tips + '</span>' +
+							'</div>' +
+							'<div class="notice">' +
+								'<p class="notice-info">公告: ' + res.promotion_info + '</p>' +
+							'</div>' +
+							'<div><a id="header_detail" href="">&gt;</a></div>' +
+						'</div>	' +
+					'</div>' +
+					'<div class="detail-active">' +
+					'<div class="news">' + res.activities[0].description + '</div>' +
+					'<span class="active-num">' + res.activities.length + '个活动</span>' +
+					'</div>';
 
 				$(".detail-header").html(str);
 

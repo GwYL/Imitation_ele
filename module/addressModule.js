@@ -35,7 +35,7 @@ var addressModule = {
 				console.log(res);
 				var str = "";
 				for (var i = 0; i < res.length; i++) {
-					str += '<div><a href="#rList-' + res[i].latitude + '-' + res[i].longitude + '">'+ res[i].name + '</a></div>';
+					str += '<div><a href="#rList-' + res[i].latitude + '-' + res[i].longitude + '-' + res[i].geohash + '">'+ res[i].name + '</a></div>';
 					str += '<p>' + res[i].address + '</p>';
 				}
 				$(".content").html(str);

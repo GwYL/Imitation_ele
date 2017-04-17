@@ -44,7 +44,7 @@ singleCart.prototype.render = function() { // 商品信息渲染
 				'<div class="food-price">' +
 					'<span class="price-item">￥<span>' + this.price + '</span></span>' + 
 					'<span class="minus">-</span>' + 
-					'<span class="num">0</span>' +
+					'<span class="num">' + this.num + '</span>' +
 					'<span class="plus">+</span>' +
 				'</div>' +
 			'</div>' +

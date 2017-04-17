@@ -13,13 +13,13 @@ rListModule = $.extend(rListModule, {
 		}));
 
 		var lis = $("#position li");
-		//调用轮播图的初始化方法
+		// 调用轮播图的初始化方法
 		Swipe(document.getElementById('mySwipe'), {
 		  auto: false,
 		  continuous: true,
 		  callback: function(pos) {
-		  	//当滑动结束后 所需要执行的方法
-		  	// console.log(pos); //pos当前滑动板块的索引值
+		  	// 当滑动结束后 所需要执行的方法
+		  	// console.log(pos); // pos当前滑动板块的索引值
 		  	lis.eq(pos).addClass('cur');
 		  	lis.eq(pos).siblings().removeClass('cur');
 		  }
@@ -30,7 +30,7 @@ rListModule = $.extend(rListModule, {
 		$("#lists").html("");
 		this.initCount = 0;	
 		this.dom.removeClass("noData");	
-	},
+	},	
 	loadList: function(hash, flag) {
 		this.hash = hash;
 		var me = this;
@@ -39,6 +39,7 @@ rListModule = $.extend(rListModule, {
 		}
 		var lat = hash.split("-")[1];
 		var lng = hash.split("-")[2];
+		var geohash = hash.split("-")[3];
 
 		$.ajax({
 			url: "/shopping/restaurants",
@@ -114,11 +115,27 @@ rListModule = $.extend(rListModule, {
 								'</div>' +
 							'</div>' +
 						'</li>';
-
-					// str += '<li>' + leftItem + rightPrice + '</li>';
+					
 				}
 				$("#lists").append(str);
+
+				me.loadRoll(geohash);
 				
+			}
+		})
+	},
+	loadRoll: function(geohash) { // 加载轮播图信息
+		//
+		$.ajax({
+			url: "v2/index_entry",
+			type: "get",
+			data: {
+				geohash: geohash,
+				group_type: 1,
+				flags: ["F"]
+			},
+			success: function(res) {
+				console.log(res);
 			}
 		})
 	}
